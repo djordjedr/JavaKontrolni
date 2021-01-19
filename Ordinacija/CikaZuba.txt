@@ -1,0 +1,65 @@
+package domaciGrupaIX.ordinacija;
+
+public class CikaZuba {
+
+    //Napisati glavni program koji kreira nekoliko pacijenata,  kreira ordinaciju, dodaje pacijenta na stolicu, uklanja pacijenta sa stolice,...
+
+    public static void main(String[] args) {
+        Pacijent p1 = new Pacijent("Pera", "Peric"); // pravimo jedan objekat klase pacijent
+        System.out.println(p1.ispis()); // da vidimo da je default za br knjiz null
+
+        p1.setBrKnjizice("12345"); // setujemo br knjizice
+        System.out.println(p1.ispis()); // da vidimo da je br knjiz dodat
+
+        Pacijent p2 = new Pacijent("Laza", "Lazic"); // pravimo jos jedan objekat klase pacijent
+        p2.setBrKnjizice("98765");
+        p2.setBrKnjizice("izmenjen br knjizice"); // ponovo menjamo br knjizice drugom pacijentu
+        String formatIspisa = p2.ispis(); // ova metoda vraca kao rezultat neki string i da vidimo da mozemo da ga sacuvamo u promenljivoj tipa string
+        System.out.println(formatIspisa);
+
+        Ordinacija o1= new Ordinacija("Cika zuba",2);
+
+
+        // pokusavam pozitivan scenario ali ipak sa proverom
+        if(o1.postaviPacijenta(p1, 0)) {
+            System.out.println("Pacijent " +p1.ispis() + " postavljen");
+        } else System.out.println("Pacijent nije" +p1.ispis() + " postavljen");
+
+        // pokusavam istog pacijenta da posavim na drugo mesto
+        if(o1.postaviPacijenta(p1, 0)) {
+            System.out.println("Pacijent " +p1.ispis() + " postavljen");
+        } else System.out.println("Pacijent " +p1.ispis() + " je vec postavljen, ne moz ponovo");
+
+        // pokusavam pacijenta da postavim na nepostojece mesto
+        if(o1.postaviPacijenta(p2, 4)) {
+            System.out.println("Pacijent " +p2.ispis() + " postavljen");
+        } else System.out.println("Pacijent " +p2.ispis() + " nije postavljen, mesto ne postoji");
+
+        //pokusavam novog pacijenta da postavim zauzeto mesto
+        if(o1.postaviPacijenta(p2, 0)) {
+            System.out.println("Pacijent " +p2.ispis() + " postavljen");
+        } else System.out.println("Pacijent nije" +p2.ispis() + " postavljen, mesto zauzeto");
+
+
+        if(o1.postaviPacijenta(p2, 1)) {
+            System.out.println("Pacijent " +p2.ispis() + "postavljen");
+        } else System.out.println("Pacijent " +p2.ispis() + " nije postavljen");
+
+        System.out.println(o1.getBrStolica());
+
+
+        System.out.println(o1);
+
+
+        // isto kao sto smo pisali i testirali metode za postavljanje pacijenta, mozemo da testiramo sklanjanje
+
+
+
+
+
+
+
+
+
+    }
+}

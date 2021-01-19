@@ -1,0 +1,53 @@
+package domaciGrupaIX.restoran;
+
+/*
+Napraviti klasu Jelovnik koji sadrzi kategorije jela (npr predjelo, glavno jelo, dezert…),
+naziv jela, listu sastojaka od kojih je jelo napravljeno i cenu obroka.
+ */
+
+import java.util.List;
+
+public class Jelovnik {
+    private String kategorija;
+    private String nazivJ;
+    private List<String> sastojci;
+    private double cena;
+
+    public Jelovnik(String kategorija, String nazivJ, List<String> sastojci) {
+        this.kategorija = kategorija;
+        this.nazivJ = nazivJ;
+        this.sastojci = sastojci;
+    }
+
+    public String getKategorija() {
+        return kategorija;
+    }
+
+    public void setKategorija(String kategorija) {
+        this.kategorija = kategorija;
+    }
+
+    public String getNazivJ() {
+        return nazivJ;
+    }
+
+    public void setNazivJ(String nazivJ) {
+        this.nazivJ = nazivJ;
+    }
+
+    public List<String> getSastojci() {
+        return sastojci;
+    }
+
+    public void setSastojci(List<String> sastojci) {
+        this.sastojci = sastojci;
+    }
+
+    public double getCena() {
+        return cena;
+    }
+
+    public void setCena(double cena) {
+        this.cena = cena;
+    }
+}

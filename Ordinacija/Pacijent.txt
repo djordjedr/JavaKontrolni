@@ -1,0 +1,63 @@
+package domaciGrupaIX.ordinacija;
+
+public class Pacijent {
+
+    /*
+    Napisati klasu Pacijent.
+    Pacijent poseduje ime i prezime i broj zdravstvene knjizice.
+    Pacijenta je moguce ispisati u obliku IME_PREZIME[BR.zdrav.knj]
+     */
+
+    private String ime;
+    private String prezime;
+    private String brKnjizice;
+
+    // u nasem slucaju pacijent je osoba, a osoba podrazumevano ima i ime/prezime
+    // u nasem drzavnom sistemu, podrazumeva se da imamo i zdravstvenu knjizicu
+    // ako brKnj nemate u konstruktoru, nije greska, jer realno postoje i situacije kad nam je istekla, a kod lekara moramo
+    // takodje, kad idemo privatno kod lekara/zubara knjizica nam ne treba...
+
+    public Pacijent(String ime, String prezime){
+        this.ime = ime;
+        this.prezime = prezime;
+    }
+
+    // metoda kojom dohvatam ime
+    // probajte da zamislite realan scenario - tipa lekar treba da procita ime pacijenta, znaci nekako treba da ga dohvati
+    public String getIme() {
+        return ime;
+    }
+
+    //isto sto vazi i za ime iznad
+    public String getPrezime() {
+        return prezime;
+    }
+
+    // isto sto i za ime i prezime
+    public String getBrKnjizice() {
+        return brKnjizice;
+    }
+
+    // ali s obzirom da moj konstruktor NEMA br knjizice
+    // ako ne napravim setter, nikada nece moci da se izmeni
+    // i uvek ce imati default vrednost, sto je u ovom slucaju, za String null
+    // a onda se postavlja pitanje - cemu ce mi polje ako je ono zakucano na null i to je to?
+    public void setBrKnjizice(String brKnjizice) {
+        this.brKnjizice = brKnjizice;
+    }
+
+    //Pacijenta je moguce ispisati u obliku IME_PREZIME[BR.zdrav.knj]
+    // stringbuilder je bolje resenje nego gomilanje stringova
+    public String ispis(){
+        StringBuilder sb = new StringBuilder();
+        sb.append(getIme());
+        sb.append("_");
+        sb.append(getPrezime());
+        sb.append(" [");
+        sb.append(getBrKnjizice());
+        sb.append("]");
+        return sb.toString();
+    }
+
+    // to je sve sto nam u klasi Pacijent treba a da odgovara zahtevu
+}

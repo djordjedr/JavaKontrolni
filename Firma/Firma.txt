@@ -1,0 +1,61 @@
+package domaciGrupaIX.firma;
+
+/*
+Firma poseduje naziv, sediste, PIB i niz zaposlenih.
+Sva polja mogu da se dohvate, a naziv firme moze i da se postavi.
+Ispisati ceo objekat klase firma.
+Ispisati prezimena svih zaposlenih u firmi.
+
+ */
+
+public class Firma {
+
+    private String naziv;
+    private String pib;
+    private Zaposleni [] zaposleni;
+
+    public Firma(String naziv, String pib, Zaposleni[] zaposleni) {
+        this.naziv = naziv;
+        this.pib = pib;
+        this.zaposleni = zaposleni;
+    }
+
+    public String getNaziv() {
+        return naziv;
+    }
+
+    public String getPib() {
+        return pib;
+    }
+
+    public Zaposleni[] getZaposleni() {
+        return zaposleni;
+    }
+
+    public void setNaziv(String naziv) {
+        this.naziv = naziv;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(getNaziv());
+        sb.append(" , PIB: ");
+        sb.append(getPib());
+        sb.append("\n");
+        sb.append("Zaposleni: ");
+        sb.append(ispisZaposleni(zaposleni));
+        return sb.toString();
+    }
+
+    public String ispisZaposleni(Zaposleni[] zaposleni){ // niz je takodje slozena struktura, i zato pravimo novu metodu za ispis
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i<zaposleni.length; i++){
+            sb.append("\n");
+            sb.append(zaposleni[i].toString());
+
+        } return sb.toString();
+    }
+
+
+}

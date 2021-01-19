@@ -1,0 +1,20 @@
+Firma poseduje naziv, sediste, PIB i niz zaposlenih. Sva polja mogu da se dohvate, a naziv firme moze i da se postavi. Ispisati ceo objekat klase firma. Ispisati prezimena svih zaposlenih u firmi.
+Zaposleni ima ime i prezime koji se zadaju prilikom kreiranja, poziciju i iznos mesecnih primanja. Zaposlenog ispisati u obliku IME_PREZIME: POZICIJA (mesecna zarada)
+
+Napisati glavni program, gde cete testirati kako ove klase funkcionisu.
+
+Napraviti klasu Restoran koji sadrzi podatke o nazivu restorana i tipu kuhinje za koji je specijalizovan. Oba podatka mogu i da se dohvate i postave.
+Napraviti klasu Jelovnik koji sadrzi kategorije jela (npr predjelo, glavno jelo, dezert…), naziv jela, listu sastojaka od kojih je jelo napravljeno i cenu obroka.
+
+U glavnom programu testirati kako ove klase funkcionisu -> dodati sastojak u jelo, izbaciti sastojak, promeniti naziv jela,...
+
+
+Dodatni neobavezni zadatak
+
+Napisati klasu Pacijent. Pacijent poseduje ime i prezime i broj zdravstvene knjizice. Pacijenta je moguce ispisati u obliku IME_PREZIME[BR.zdrav.knj]
+Klasa Ordinacija poseduje naziv ordinacije koji se zadaje prilikom kreiranja i niz stolica ciji se broj zadaje prilikom kreiranja. Na njima sede pacijenti. Moguce je dohvatiti broj stolica. Moguce je postaviti pacijenta na stolicu tako da se vrati indikator da li je pacijent uspesno postavljen na stolicu (ako je stolica prazna mozemo da postavimo pacijenta i ako postoji uopste prazna stolica). Moguce je skloniti pacijenta sa stolice.
+Napisati glavni program koji kreira nekoliko pacijenata,  kreira ordinaciju, dodaje pacijenta na stolicu, uklanja pacijenta sa stolice,...
+
+
+Dodatni obavezni zadatak
+Kreirati StringBuilder i igrati se sa vec napisanim metodama, koje smo vezbali i na casu

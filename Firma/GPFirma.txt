@@ -1,0 +1,34 @@
+package domaciGrupaIX.firma;
+
+/*
+testiranje klasa zaposleni i firma
+ */
+
+public class GPFirma {
+
+    public static void main(String[] args) {
+
+
+        Zaposleni z1 = new Zaposleni("Pera", "Peric");
+        Zaposleni z2 = new Zaposleni("Zika", "Zikic");
+        Zaposleni z3 = new Zaposleni("Laza", "Lazic");
+
+        z1.setPlata(2000);
+        z1.setPozicija("menadzer");
+
+        z2.setPlata(500);
+        z2.setPozicija("Junior QA");
+
+        z3.setPozicija("dev");
+        z3.setPlata(1200);
+
+        Zaposleni[] radnici = {z1, z2, z3};
+
+
+        Firma f1 = new Firma("Neka firma", "123456", radnici);
+
+        System.out.println(f1.toString());
+
+    }
+
+}

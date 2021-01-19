@@ -1,0 +1,42 @@
+package domaciGrupaIX.restoran;
+
+/*
+Napraviti klasu Restoran koji sadrzi podatke o nazivu restorana i tipu kuhinje za koji je specijalizovan.
+Oba podatka mogu i da se dohvate i postave.
+ */
+
+public class Restoran {
+
+    private String nazivR;
+    private String kuhinja;
+    private Jelovnik meni;
+
+    public Restoran(String nazivR, String kuhinja) {
+        this.nazivR = nazivR;
+        this.kuhinja = kuhinja;
+    }
+
+    public String getNazivR() {
+        return nazivR;
+    }
+
+    public void setNazivR(String nazivR) {
+        this.nazivR = nazivR;
+    }
+
+    public String getKuhinja() {
+        return kuhinja;
+    }
+
+    public void setKuhinja(String kuhinja) {
+        this.kuhinja = kuhinja;
+    }
+
+    public Jelovnik getMeni() {
+        return meni;
+    }
+
+    public void setMeni(Jelovnik meni) {
+        this.meni = meni;
+    }
+}

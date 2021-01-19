@@ -1,0 +1,60 @@
+package domaciGrupaIX.restoran;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class GPRestoran {
+
+    public static void main(String[] args) {
+
+        StringBuilder sb = new StringBuilder();
+
+        List<String> jelo1 = new ArrayList<String>();
+        List<String> jelo2 = new ArrayList<String>();
+        List<String> jelo3 = new ArrayList<String>();
+
+        jelo1.add("jaja");
+        jelo1.add("feta");
+        jelo1.add("panceta");
+
+        jelo2.add("prebranac");
+        jelo2.add("kobasica");
+        jelo2.add("kupus salata");
+
+        Jelovnik meni1 = new Jelovnik("dorucak", "kajgana", jelo1);
+        meni1.setCena(300);
+
+        Jelovnik meni2 = new Jelovnik("glavno jelo", "prebranac", jelo2);
+        meni2.setCena(550);
+
+        Restoran r1 = new Restoran("Basta", "srpska kuhinja");
+        r1.setMeni(meni1);
+
+        sb.append(r1.getNazivR());
+        sb.append(", ");
+        sb.append(r1.getKuhinja());
+        sb.append("\n");
+
+        sb.append(meni1.getNazivJ());
+        sb.append(meni1.getSastojci());
+        sb.append(", ");
+        sb.append(meni1.getKategorija());
+        sb.append(", ");
+        sb.append(meni1.getCena());
+
+        sb.append("\n");
+
+        sb.append(meni2.getNazivJ());
+        sb.append(meni2.getSastojci());
+        sb.append(", ");
+        sb.append(meni2.getKategorija());
+        sb.append(", ");
+        sb.append(meni2.getCena());
+        sb.append(" din");
+
+        System.out.println(sb.toString());
+
+
+
+    }
+}

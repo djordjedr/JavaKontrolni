@@ -1,0 +1,118 @@
+package domaciGrupaIX.ordinacija;
+
+import domaciGrupaIX.firma.Zaposleni;
+
+public class Ordinacija {
+
+    /*
+Klasa Ordinacija poseduje naziv ordinacije koji se zadaje prilikom kreiranja
+i niz stolica ciji se broj zadaje prilikom kreiranja.
+Na njima sede pacijenti.
+Moguce je dohvatiti broj stolica.
+Moguce je postaviti pacijenta na stolicu tako da se vrati indikator da li je pacijent uspesno postavljen na stolicu
+(ako je stolica prazna mozemo da postavimo pacijenta i ako postoji uopste prazna stolica).
+Moguce je skloniti pacijenta sa stolice.
+     */
+
+    private String naziv;
+    private Pacijent [] stolice; // jedno od logicnih resenja
+                                // pacijenti sede na stolicama, to jest imacemo neki niz pacijenata na stolicama, te je niz tipa Pacijent
+                                // u zahtevu stoji niz zato ne pravim listu
+                                // sto ima smisla, broj mesta za smestanje pacijenata u ordinaciji jeste ogranicen, a niz je struktura koja to omogucava
+
+    // konstruktor sluzi za kreiranje instanci tj.objekata neke klase
+    public Ordinacija(String naziv, int n){ // int n saljem kao parametar jer je takav zahtev - niz stolica ciji se broj zadaje prilikom kreiranja
+        this.naziv = naziv;
+        this.stolice = new Pacijent[n];
+    }
+
+    public String getNaziv() {
+        return naziv;
+    }
+
+    // dohvatanje  BROJA STOLICA (to je duzina niza) prema zahtevu zadatka
+    public int getBrStolica() {
+        return this.stolice.length;
+    }
+
+    // za stavljanje/ sklanjaje pacijenata tip metode boolean jer treba da se vrati indikator uspesnosti
+    // zamislimo realnu situaciju: imamo 3 slobodne stolice, a 4 pacijenta.
+    // cetvrti pacijent nema gde da sedne, i ako probamo da ga smestimo, hocemo da program kaze da je to neuspesno
+
+
+    // postoji pacijent koji bi da sedne na stolicu u ordinaciji
+    // postoji stolica i ona je slobodna (prazna)
+
+    public boolean postaviPacijenta(Pacijent p, int brStolice) { // prosledjujemo Pacijenta koji bi da sedne i broj stolice (index u nizu) na koju treba da sedne
+
+        // ogradjujemo se da ako imamo 5 stolica a neko kaze pacijentu da sedne na sedmu stolicu
+        // i od toga da neko kaze pacijentu da sedne na -8 stolicu npr
+        if (brStolice >= this.stolice.length || brStolice < 0)
+            return false;
+
+        //ogradjujemo se da pacijenti sede jedni drugima u krilu
+        if (stolice[brStolice] != null)
+            return false;
+
+        // prolazimo kroz niz stolica
+        // mi imamo npr niz od 5 stolica, a pacijent koji je bio na drugoj stolici je zavrsio i otisao
+        // pa mi na to isto drugo mesto mozemo da smestimo novog pacijenta
+        for (int i = 0; i < stolice.length; i++) {
+            if (stolice[i] != null) {
+                if (stolice[i] == p) { // jedan pacijent p ne moze da istovremeno sedi na jednoj stolici i da se smesti na neku novu
+                    return false;
+                }
+            }
+        }
+        // e ako sve ovo prodje, dobar unos za brStolice, ima prazna stolica u nizu i pacijent koga zelimo da smestimo vec nije na nekoj stolici
+        // to jest nista nije false
+        // onda:
+
+        stolice[brStolice] = p;
+        return true;
+    }
+
+    // za sklanjanje pacijenata nije trazen indikator uspesnosti
+    // pa odabrah da bude metoda void
+
+    public void skloniPacijenta(Pacijent p, int brStolice) {
+        // opet se ogradjujemo od unosa bez smisla
+        if (brStolice >= this.stolice.length || brStolice < 0)
+            // return "Nepostojeca stolica";   moze ovako ili samo
+            return;
+        if (stolice[brStolice] == null) // stolica je vec prazna
+            return;
+        if (stolice[brStolice] !=p) // ako ne sedi zadati [acijent vec na toj stolici
+            return;
+
+        for (int i = 0; i < stolice.length; i++) {
+            if (stolice[i] != null) { // ako stolica nije prazna
+                if (stolice[i] == p) { // i trazeni pacijent sedi na njoj
+                    stolice[i] = null; // isprazni stolicu tj setuj na null
+                    return;
+                }
+            }
+        }
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(this.getNaziv());
+        sb.append("\n");
+        sb.append("Broj stolica u ordinaciji");
+        sb.append(":");
+        sb.append(this.getBrStolica());
+        sb.append("\n");
+        sb.append("[");
+        for (int i = 0; i < stolice.length; i++) {
+            if(stolice[i]!=null){
+                sb.append(stolice[i].getIme());
+                sb.append(" ");
+            }
+        }
+        sb.append("]");
+        return sb.toString();
+    }
+
+}
